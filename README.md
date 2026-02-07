@@ -75,6 +75,8 @@ Examples:
 If you want the “why” behind the shape:
 - [`docs/rubric.md`](./docs/rubric.md)
 - [`docs/references.md`](./docs/references.md)
+- [`docs/problem-schema-human.md`](./docs/problem-schema-human.md)
+- [`docs/problem-schema-llm.md`](./docs/problem-schema-llm.md)
 
 ## License
 MIT.

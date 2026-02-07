@@ -1,36 +1,48 @@
-# Rubric: what RPO is optimizing for
+# Rubric: What RPO Optimizes For
 
-RPO (Renderable Prompt Object) is a **prompt intermediate representation** (IR) plus deterministic renderers.
+RPO (Renderable Prompt Object) is a prompt IR with deterministic renderers. The goal is to make prompt work reviewable and testable like code.
 
-It’s meant to make prompt work behave more like software engineering:
+## Problem-schema rubric
 
-- **diffable** (structured fields, not one giant string)
-- **testable** (snapshot tests for rendered outputs)
-- **portable** (render to UI and API targets)
-- **auditable** (explicit constraints, decisions, artifacts)
+Use this as a pass/fail rubric for any schema or renderer change.
 
-## Core claims
+1. **Separation**
+- Rules, persistent state, active task, and output contract are separate fields.
+- No field silently carries another field’s responsibility.
 
-1) **IR → renderer reduces drift**
-- You can change content without changing structure.
-- You can review changes as data, not prose.
+2. **Determinism**
+- Same input object yields identical render output.
+- Renderer ordering is stable and explicit.
 
-2) **System vs user split is explicit**
-- Cold/warm context belongs in system.
-- Hot task belongs in user.
+3. **Strictness**
+- Unknown fields fail validation.
+- Required fields stay required unless versioned schema change is intentional.
 
-3) **Renderers are contracts**
-- The rendered output is the artifact.
-- Snapshot tests protect that contract.
+4. **Reviewability**
+- A change in behavior maps to a clear JSON diff.
+- Rationale for schema changes is documented in nearby docs/changelog.
+
+5. **Portability**
+- Schema remains target-agnostic; renderer handles target specifics.
+- Adding a renderer should not require schema shape changes for existing fields.
+
+## Decision tradeoffs
+
+- Strong validation (`additionalProperties: false`) catches drift early, but reduces ad-hoc flexibility.
+- Deterministic rendering improves testability, but limits stylistic output freedom.
+- Explicit warm state improves handoffs and auditing, but requires ongoing curation.
+- Required output contract improves downstream automation, but can constrain exploratory tasks.
 
 ## Non-goals
 
-- RPO is not an agent framework.
-- RPO does not guarantee correctness.
-- RPO does not replace retrieval, evals, or verification gates.
+- Not an agent runtime.
+- Not an eval framework.
+- Not a truth/correctness guarantee.
+- Not a replacement for retrieval or tool verification.
 
-## Verification (what we expect to be true)
+## Verification gates
 
-- `rpo validate` rejects invalid objects with human-readable errors.
-- `rpo render` is deterministic for a given input.
-- Examples in [`examples/`](../examples/) render to stable outputs under CI.
+- Validate examples against [`schema/rpo.v1.schema.json`](../schema/rpo.v1.schema.json).
+- Ensure packaged schema matches repo schema: [`src/rpo/data/rpo.v1.schema.json`](../src/rpo/data/rpo.v1.schema.json).
+- Keep renderer output deterministic in [`src/rpo/render_ui.py`](../src/rpo/render_ui.py).
+- Keep regressions covered in [`tests/test_smoke.py`](../tests/test_smoke.py).
