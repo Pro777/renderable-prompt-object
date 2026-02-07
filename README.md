@@ -1,8 +1,22 @@
 # Renderable Prompt Object (RPO)
 
-A **prompt intermediate representation** (IR) you can validate, diff, and compile into multiple targets.
+RPO is a **prompt intermediate representation** (IR): a small JSON schema for capturing *rules + state + task + output contract*, then **rendering** it into the exact prompt formats your tools need.
 
-**Thesis:** schema stays rich; renderer stays lean.
+## ✅ What it is
+- A **diffable** prompt object (not one giant string)
+- A **validator** (schema + constraints)
+- A set of **renderers** (Chat UI, API/provider formats)
+
+## 🧠 Why it matters
+Prompts rot because they’re unreviewable blobs. RPO makes prompt changes:
+- reviewable (data diffs)
+- testable (snapshot rendered outputs)
+- portable (one object → many targets)
+
+## 🎯 Who should use it
+- People shipping agents/prompts in teams (code review / versioning)
+- Anyone maintaining “modes” or reusable prompt templates
+- Tooling authors who want a clean boundary: **schema stays rich; renderer stays lean**
 
 ## 🧾 What it produces (above the fold)
 
