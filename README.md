@@ -46,10 +46,6 @@ rpo render examples/01-simple-codegen.json --target ui
 rpo render examples/01-simple-codegen.json --target api --provider openai
 ```
 
-## 🔗 Relationship to Proof of Ship / Ship Receipts
-- RPO helps you **ship** reliable agent work.
-- Ship Receipts help you **prove** what shipped.
-
 ## 📎 References (receipts)
 If you want the “why” behind the shape:
 - `docs/rubric.md`
