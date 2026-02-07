@@ -62,7 +62,9 @@ rpo render examples/01-simple-codegen.json --target ui
 rpo render examples/01-simple-codegen.json --target api --provider openai
 ```
 
-(Example file: [`examples/01-simple-codegen.json`](./examples/01-simple-codegen.json))
+Examples:
+- [`examples/01-simple-codegen.json`](./examples/01-simple-codegen.json)
+- [`examples/90-research-round.json`](./examples/90-research-round.json) (paired with [`modes/research.mode.md`](./modes/research.mode.md))
 
 ## 📎 References (receipts)
 If you want the “why” behind the shape:
