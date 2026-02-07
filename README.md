@@ -50,5 +50,10 @@ rpo render examples/01-simple-codegen.json --target api --provider openai
 - RPO helps you **ship** reliable agent work.
 - Ship Receipts help you **prove** what shipped.
 
+## References (receipts)
+If you want the “why” behind the shape:
+- `docs/rubric.md`
+- `docs/references.md`
+
 ## License
 MIT.
