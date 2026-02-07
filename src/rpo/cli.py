@@ -8,6 +8,15 @@ from .render_ui import render_ui
 from .schema import validate_rpo
 
 
+def _load_json(path: str) -> dict:
+    try:
+        return json.loads(Path(path).read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise SystemExit(f"File not found: {path}") from exc
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"Invalid JSON in {path}: line {exc.lineno}, column {exc.colno}") from exc
+
+
 def main() -> None:
     p = argparse.ArgumentParser(prog="rpo", description="Renderable Prompt Object (RPO)")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -21,7 +30,7 @@ def main() -> None:
 
     args = p.parse_args()
 
-    obj = json.loads(Path(args.path).read_text(encoding="utf-8"))
+    obj = _load_json(args.path)
 
     if args.cmd == "validate":
         errors = validate_rpo(obj)
@@ -43,3 +52,7 @@ def main() -> None:
             return
 
     raise SystemExit(2)
+
+
+if __name__ == "__main__":
+    main()
