@@ -1,0 +1,24 @@
+{
+  "mode": {
+    "name": "codegen",
+    "version": 1,
+    "rules": "Write clean, tested Python. Be concise. Prefer small, composable functions."
+  },
+  "warm_state": {
+    "goal": "Ship a tiny CLI",
+    "constraints": ["Be concise"],
+    "facts": [],
+    "decisions": [],
+    "next_actions": []
+  },
+  "hot_task": {
+    "type": "codegen",
+    "prompt": "Write a Python function `slugify(s: str) -> str` that converts a string into a URL-safe slug.",
+    "success_criteria": "Lowercase; trim whitespace; replace internal whitespace with hyphens; remove non-alphanumeric characters except hyphens; collapse repeated hyphens; never return empty (return 'x' if needed). Include a few unit tests.",
+    "inputs": []
+  },
+  "output_contract": {
+    "format": "markdown",
+    "max_words": 200
+  }
+}
