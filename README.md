@@ -50,17 +50,18 @@ Success: ...
 Format: markdown | Max: 200 words
 ```
 
-## 🚀 Install (planned)
+## 🚀 Install
 ```bash
 python -m pip install renderable-prompt-object
 ```
 
-## 🛠️ CLI (planned)
+## 🛠️ CLI
 ```bash
 rpo validate examples/01-simple-codegen.json
 rpo render examples/01-simple-codegen.json --target ui
-rpo render examples/01-simple-codegen.json --target api --provider openai
 ```
+
+(Provider/API rendering is intentionally out of scope for this early release.)
 
 Examples:
 - [`examples/01-simple-codegen.json`](./examples/01-simple-codegen.json)

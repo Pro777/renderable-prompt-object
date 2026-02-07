@@ -12,6 +12,9 @@ The format is based on *Keep a Changelog*, and this project aims to follow Seman
 
 ### Fixed
 
-## [0.0.0] - YYYY-MM-DD
+## [1.0.0a1] - 2026-02-07
 
-Initial placeholder.
+### Added
+- Minimal RPO v1 schema + validator (`rpo validate`).
+- Deterministic Chat UI renderer (`rpo render --target ui`).
+- Example RPO objects under [`examples/`](./examples/).

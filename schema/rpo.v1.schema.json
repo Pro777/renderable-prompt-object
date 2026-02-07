@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Pro777/renderable-prompt-object/blob/main/schema/rpo.v1.schema.json",
+  "title": "Renderable Prompt Object (RPO) v1",
+  "type": "object",
+  "required": ["mode", "warm_state", "hot_task", "output_contract"],
+  "properties": {
+    "mode": {
+      "type": "object",
+      "required": ["name", "version", "rules"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "version": {"type": "integer", "minimum": 1},
+        "rules": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "warm_state": {
+      "type": "object",
+      "required": ["goal", "constraints", "facts", "decisions", "next_actions"],
+      "properties": {
+        "goal": {"type": "string"},
+        "constraints": {"type": "array", "items": {"type": "string"}},
+        "facts": {"type": "array", "items": {"type": "string"}},
+        "decisions": {"type": "array", "items": {"type": "string"}},
+        "next_actions": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "hot_task": {
+      "type": "object",
+      "required": ["type", "prompt", "success_criteria", "inputs"],
+      "properties": {
+        "type": {"type": "string", "minLength": 1},
+        "prompt": {"type": "string"},
+        "success_criteria": {"type": "string"},
+        "inputs": {"type": "array"}
+      },
+      "additionalProperties": false
+    },
+    "output_contract": {
+      "type": "object",
+      "required": ["format"],
+      "properties": {
+        "format": {"type": "string", "minLength": 1},
+        "max_words": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

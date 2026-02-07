@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "renderable-prompt-object"
+version = "1.0.0a1"
+description = "Prompt intermediate representation (IR): validate, diff, and render prompts into multiple targets."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {file = "LICENSE"}
+authors = [{name = "John Malone"}]
+keywords = ["prompt", "llm", "schema", "ir"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+]
+dependencies = [
+  "jsonschema>=4.0.0",
+]
+
+[project.scripts]
+rpo = "rpo.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+rpo = ["data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
