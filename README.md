@@ -2,6 +2,8 @@
 
 RPO is a **prompt intermediate representation** (IR): a small JSON schema for capturing *rules + state + task + output contract*, then **rendering** it into the exact prompt formats your tools need.
 
+> Status: early v0 (spec/examples first; CLI/package catching up). Created 2026-02-07.
+
 ## ✅ What it is
 - A **diffable** prompt object (not one giant string)
 - A **validator** (schema + constraints)
