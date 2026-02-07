@@ -4,7 +4,7 @@ A **prompt intermediate representation** (IR) you can validate, diff, and compil
 
 **Thesis:** schema stays rich; renderer stays lean.
 
-## What it produces (above the fold)
+## 🧾 What it produces (above the fold)
 
 ### Input (RPO JSON)
 ```json
@@ -34,23 +34,23 @@ Success: ...
 Format: markdown | Max: 200 words
 ```
 
-## Install (planned)
+## 🚀 Install (planned)
 ```bash
 python -m pip install renderable-prompt-object
 ```
 
-## CLI (planned)
+## 🛠️ CLI (planned)
 ```bash
 rpo validate examples/01-simple-codegen.json
 rpo render examples/01-simple-codegen.json --target ui
 rpo render examples/01-simple-codegen.json --target api --provider openai
 ```
 
-## Relationship to Proof of Ship / Ship Receipts
+## 🔗 Relationship to Proof of Ship / Ship Receipts
 - RPO helps you **ship** reliable agent work.
 - Ship Receipts help you **prove** what shipped.
 
-## References (receipts)
+## 📎 References (receipts)
 If you want the “why” behind the shape:
 - `docs/rubric.md`
 - `docs/references.md`
