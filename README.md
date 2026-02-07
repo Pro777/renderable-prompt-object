@@ -48,8 +48,8 @@ rpo render examples/01-simple-codegen.json --target api --provider openai
 
 ## 📎 References (receipts)
 If you want the “why” behind the shape:
-- `docs/rubric.md`
-- `docs/references.md`
+- [`docs/rubric.md`](./docs/rubric.md)
+- [`docs/references.md`](./docs/references.md)
 
 ## License
 MIT.
