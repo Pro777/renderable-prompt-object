@@ -33,4 +33,4 @@ It’s meant to make prompt work behave more like software engineering:
 
 - `rpo validate` rejects invalid objects with human-readable errors.
 - `rpo render` is deterministic for a given input.
-- Examples in `examples/` render to stable outputs under CI.
+- Examples in [`examples/`](../examples/) render to stable outputs under CI.

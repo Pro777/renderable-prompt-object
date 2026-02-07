@@ -46,6 +46,8 @@ rpo render examples/01-simple-codegen.json --target ui
 rpo render examples/01-simple-codegen.json --target api --provider openai
 ```
 
+(Example file: [`examples/01-simple-codegen.json`](./examples/01-simple-codegen.json))
+
 ## 📎 References (receipts)
 If you want the “why” behind the shape:
 - [`docs/rubric.md`](./docs/rubric.md)
