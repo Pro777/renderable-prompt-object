@@ -1,0 +1,37 @@
+{
+  "mode": {
+    "name": "research",
+    "version": 1,
+    "rules": "You are a research assistant. Be precise. Prefer primary sources. Separate claims from hypotheses. Provide citations/links when possible. If you are unsure, say so. Do not invent paper titles, authors, venues, or dates."
+  },
+  "warm_state": {
+    "goal": "Investigate multi-agent conversation convergence / diminishing returns stopping criteria",
+    "constraints": [
+      "Output must include structured sections: Claims, Evidence, Open Questions, Next Actions",
+      "Do not overclaim 'confidence'; describe observable proxies",
+      "Include at least 3 concrete implementation suggestions"
+    ],
+    "facts": [
+      "We are building a tool named 'Diminishing Returns' (dr) that outputs a stop/ship signal, not correctness.",
+      "We also have 'Ship Receipts' (artifact-backed provenance) and 'RPO' (prompt IR + renderers)."
+    ],
+    "decisions": [
+      "Use a composite stopping rule: low novelty + high semantic stability for k rounds",
+      "Instrument real research conversations as the first dataset"
+    ],
+    "next_actions": [
+      "Produce a v0.1 transcript schema and a round-output JSON schema",
+      "Draft initial scoring heuristics and a labeling guide"
+    ]
+  },
+  "hot_task": {
+    "type": "research",
+    "prompt": "Draft a v0.1 'research round output' JSON schema and a minimal transcript format that can be used to compute diminishing-returns metrics across rounds. Then give one worked example round output.",
+    "success_criteria": "Schemas are concrete and implementable; example matches schemas; includes fields enabling novelty and stability calculations.",
+    "inputs": []
+  },
+  "output_contract": {
+    "format": "markdown",
+    "max_words": 650
+  }
+}
