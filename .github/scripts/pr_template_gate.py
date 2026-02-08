@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import os
 import re
-import sys
 
 REQUIRED_HEADINGS = ["## What", "## Why", "## Verification", "## Notes"]
 REQUIRED_VERIFICATION_LABELS = [
