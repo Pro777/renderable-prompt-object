@@ -34,6 +34,7 @@ Use this skill for tasks involving:
 
 ## Verification commands
 
+
 Use these commands from repo root:
 
 ```bash
@@ -42,6 +43,14 @@ PYTHONPATH=src python3 -m rpo.cli validate examples/01-simple-codegen.json
 PYTHONPATH=src python3 -m rpo.cli validate examples/90-research-round.json
 PYTHONPATH=src python3 -m rpo.cli render examples/01-simple-codegen.json --target ui
 ```
+
+## Completion gate (mandatory)
+
+A change is **not complete** unless all verification commands listed above pass
+without modification or exception.
+
+Partial success, skipped commands, or “passes locally but not in CI” do not meet
+this bar.
 
 ## Guardrails
 
