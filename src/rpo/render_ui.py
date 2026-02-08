@@ -65,6 +65,7 @@ def render_ui(rpo: Dict[str, Any]) -> str:
     if success:
         parts.append(f"Success: {success}")
 
+    # Contract: omit the Inputs section entirely unless one or more items exist.
     inputs = hot.get("inputs")
     if isinstance(inputs, list) and inputs:
         parts.append("Inputs:")
