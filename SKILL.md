@@ -34,15 +34,17 @@ Use this skill for tasks involving:
 
 ## Verification commands
 
-
 Use these commands from repo root:
 
 ```bash
 PYTHONPATH=src python3 -m pytest -q
-PYTHONPATH=src python3 -m rpo.cli validate examples/01-simple-codegen.json
-PYTHONPATH=src python3 -m rpo.cli validate examples/90-research-round.json
-PYTHONPATH=src python3 -m rpo.cli render examples/01-simple-codegen.json --target ui
+PYTHONPATH=src python3 -m rpo validate examples/01-simple-codegen.json
+PYTHONPATH=src python3 -m rpo validate examples/90-research-round.json
+PYTHONPATH=src python3 -m rpo render examples/01-simple-codegen.json --target ui
 ```
+
+**Note**: These commands use `PYTHONPATH=src` to run against the working tree
+(not an installed package), ensuring verification reflects current code changes.
 
 ## Completion gate (mandatory)
 
