@@ -34,6 +34,8 @@ Use this skill for tasks involving:
 
 ## Verification commands
 
+> Note: These commands intentionally use `PYTHONPATH=src` and `python -m rpo.cli`
+> to ensure verification runs against the working tree, not an installed package.
 
 Use these commands from repo root:
 
