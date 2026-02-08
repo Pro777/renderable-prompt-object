@@ -63,6 +63,10 @@ rpo render examples/01-simple-codegen.json --target ui
 
 (Provider/API rendering is intentionally out of scope for this early release.)
 
+Behavior notes:
+- CLI fails explicitly for missing files, invalid JSON, and non-object top-level JSON values.
+- UI renderer omits the `Inputs` section unless `hot_task.inputs` contains one or more items.
+
 Examples:
 - [`examples/01-simple-codegen.json`](./examples/01-simple-codegen.json)
 - [`examples/90-research-round.json`](./examples/90-research-round.json) (paired with [`modes/research.mode.md`](./modes/research.mode.md))
