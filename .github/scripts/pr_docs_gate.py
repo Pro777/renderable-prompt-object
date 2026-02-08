@@ -4,7 +4,6 @@ from __future__ import annotations
 import fnmatch
 import os
 import subprocess
-import sys
 from pathlib import PurePosixPath
 
 CODE_PATTERNS = [
