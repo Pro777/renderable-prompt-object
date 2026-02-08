@@ -60,7 +60,7 @@ Deviation from this order is a contract violation.
 
 Before emitting a response, confirm:
 
-- Every `hot_task.success_criteria` item is addressed.
+- The `hot_task.success_criteria` string is satisfied (it may contain an internal checklist).
 - No `mode.rules` are violated.
 - The required `output_contract.format` is fully respected.
 - All referenced inputs are present and accounted for.
