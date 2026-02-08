@@ -17,8 +17,11 @@ def _parse_ts(value: str) -> dt.datetime:
 
 
 def _run_json(cmd: list[str], stdin: str | None = None) -> dict[str, Any]:
-    out = subprocess.check_output(cmd, text=True, input=stdin)
-    return json.loads(out)
+    proc = subprocess.run(cmd, text=True, input=stdin, capture_output=True)
+    if proc.returncode != 0:
+        stderr = (proc.stderr or "").strip()
+        raise RuntimeError(stderr or f"command failed: {' '.join(cmd)}")
+    return json.loads(proc.stdout)
 
 
 def _gh_graphql(query: str, fields: dict[str, str], stdin_query: bool = False) -> dict[str, Any]:
@@ -94,9 +97,17 @@ query($owner:String!, $repo:String!, $number:Int!, $cursor:String) {
     return threads
 
 
-def _resolve_thread(thread_id: str) -> None:
+def _resolve_thread(thread_id: str) -> bool:
     mutation = "mutation($id:ID!){ resolveReviewThread(input:{threadId:$id}) { thread { id isResolved } } }"
-    _gh_graphql(mutation, {"id": thread_id})
+    try:
+        _gh_graphql(mutation, {"id": thread_id})
+        return True
+    except RuntimeError as exc:
+        msg = str(exc)
+        if "Resource not accessible by integration" in msg:
+            print(f"WARN: skipping thread {thread_id}: {msg}")
+            return False
+        raise
 
 
 def main() -> int:
@@ -117,6 +128,7 @@ def main() -> int:
     threads = _fetch_threads(args.owner, args.repo, args.number)
 
     resolved = 0
+    skipped = 0
     unresolved = 0
     considered = 0
 
@@ -139,13 +151,16 @@ def main() -> int:
             can_resolve = True
 
         if can_resolve:
-            _resolve_thread(thread["id"])
-            resolved += 1
+            if _resolve_thread(thread["id"]):
+                resolved += 1
+            else:
+                skipped += 1
         else:
             unresolved += 1
 
     print(f"Copilot threads considered: {considered}")
     print(f"Resolved this run: {resolved}")
+    print(f"Skipped due to token limits: {skipped}")
     print(f"Still unresolved: {unresolved}")
 
     if args.fail_on_unresolved and unresolved:
