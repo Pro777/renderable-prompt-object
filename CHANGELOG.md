@@ -7,8 +7,12 @@ The format is based on *Keep a Changelog*, and this project aims to follow Seman
 ## [Unreleased]
 
 ### Added
+- Repository contribution skill document at [`SKILL.md`](./SKILL.md) with explicit
+  verification gates for schema, renderer, and CLI changes.
 
 ### Changed
+- Clarified developer workflow expectations for agent-assisted changes via
+  [`SKILL.md`](./SKILL.md).
 
 ### Fixed
 
