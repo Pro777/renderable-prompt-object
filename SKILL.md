@@ -31,6 +31,10 @@ Use this skill for tasks involving:
 4. Keep examples minimal and valid.
 5. Run verification commands.
 6. If external behavior changes, update [`CHANGELOG.md`](./CHANGELOG.md).
+7. Ensure policy gates pass in CI:
+   - [`pr-template-gate`](./.github/workflows/policy-gates.yml)
+   - [`docs-changelog-gate`](./.github/workflows/policy-gates.yml)
+   - [`Copilot Auto-Resolve`](./.github/workflows/copilot-autoresolve.yml)
 
 ## Verification commands
 
@@ -60,6 +64,8 @@ this bar.
 - Do not claim provider/API targets exist unless implemented.
 - Keep renderer output deterministic.
 - Prefer explicit validation errors over silent fallback behavior.
+- Resolve Copilot review threads only when the relevant file changed and the feedback is outdated
+  or superseded by newer commits.
 
 ## Done criteria
 
