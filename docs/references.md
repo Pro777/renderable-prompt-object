@@ -43,7 +43,7 @@ design.
 
   - *Context*: The “Golden Master” concept is commonly discussed under the name
     **Characterization Tests**, popularized by Michael Feathers (*Working Effectively with
-    Legacy Code*). It is also discussed by **[Martin Fowler](chatgpt://generic-entity?number=0)**
+    Legacy Code*). It is also discussed by **[Martin Fowler](https://martinfowler.com/)**
     in the context of protecting existing behavior during refactoring, even though Fowler
     no longer hosts a dedicated Bliki page under the “Golden Master” name.
 
