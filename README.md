@@ -1,26 +1,30 @@
 # Renderable Prompt Object (RPO)
 
-RPO is a **prompt intermediate representation** (IR): a small JSON schema for capturing *rules + state + task + output contract*, then **rendering** it into the exact prompt formats your tools need.
+<p align="center">
+  <img src="docs/rpo-hero.svg" alt="Filter. Reshape. Ship." width="800"/>
+</p>
+
+RPO is a **prompt intermediate representation** (IR): a small JSON schema for capturing *rules + state + task + output contract*, then **rendering** it into the exact format each target needs — fewer tokens, every model.
 
 > Status: early v0 (spec/examples first; CLI/package catching up). Created 2026-02-07.
 
-## ✅ What it is
-- A **diffable** prompt object (not one giant string)
+## What it is
+- A **structured prompt object** (not one giant string)
 - A **validator** (schema + constraints)
 - A set of **renderers** (Chat UI, API/provider formats)
 
-## 🧠 Why it matters
-Prompts rot because they’re unreviewable blobs. RPO makes prompt changes:
-- reviewable (data diffs)
-- testable (snapshot rendered outputs)
-- portable (one object → many targets)
+## Why it matters
+Prompts rot because they're unreviewable blobs. RPO makes prompt changes:
+- **reviewable** — data diffs, not string diffs
+- **testable** — snapshot rendered outputs
+- **portable** — one object, many targets, fewer tokens
 
-## 🎯 Who should use it
-- People shipping agents/prompts in teams (code review / versioning)
-- Anyone maintaining “modes” or reusable prompt templates
+## Who should use it
+- Teams shipping agents/prompts (code review / versioning)
+- Anyone maintaining "modes" or reusable prompt templates
 - Tooling authors who want a clean boundary: **schema stays rich; renderer stays lean**
 
-## 🧾 What it produces (above the fold)
+## What it produces
 
 ### Input (RPO JSON)
 ```json
@@ -50,18 +54,18 @@ Success: ...
 Format: markdown | Max: 200 words
 ```
 
-## 🚀 Install
+## Install
 ```bash
 python -m pip install renderable-prompt-object
 ```
 
-## 🛠️ CLI
+## CLI
 ```bash
 rpo validate examples/01-simple-codegen.json
 rpo render examples/01-simple-codegen.json --target ui
 ```
 
-(Provider/API rendering is intentionally out of scope for this early release.)
+Provider/API rendering is intentionally out of scope for this early release.
 
 Behavior notes:
 - CLI fails explicitly for missing files, invalid JSON, and non-object top-level JSON values.
@@ -71,15 +75,15 @@ Examples:
 - [`examples/01-simple-codegen.json`](./examples/01-simple-codegen.json)
 - [`examples/90-research-round.json`](./examples/90-research-round.json) (paired with [`modes/research.mode.md`](./modes/research.mode.md))
 
-## 🤝 Contribution Workflow
+## Contribution Workflow
 - Agent/reviewer workflow and completion gates: [`SKILL.md`](./SKILL.md)
 - Collaboration guardrails: [`AGENTS.md`](./AGENTS.md)
 - PR docs/changelog enforcement: [`.github/workflows/policy-gates.yml`](./.github/workflows/policy-gates.yml)
 - PR description template enforcement: [`.github/scripts/pr_template_gate.py`](./.github/scripts/pr_template_gate.py)
 - Copilot review thread auto-resolution: [`.github/workflows/copilot-autoresolve.yml`](./.github/workflows/copilot-autoresolve.yml)
 
-## 📎 References (receipts)
-If you want the “why” behind the shape:
+## References
+If you want the "why" behind the shape:
 - [`docs/rubric.md`](./docs/rubric.md)
 - [`docs/references.md`](./docs/references.md)
 - [`docs/problem-schema-human.md`](./docs/problem-schema-human.md)
