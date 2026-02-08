@@ -67,6 +67,10 @@ Examples:
 - [`examples/01-simple-codegen.json`](./examples/01-simple-codegen.json)
 - [`examples/90-research-round.json`](./examples/90-research-round.json) (paired with [`modes/research.mode.md`](./modes/research.mode.md))
 
+## 🤝 Contribution Workflow
+- Agent/reviewer workflow and completion gates: [`SKILL.md`](./SKILL.md)
+- Collaboration guardrails: [`AGENTS.md`](./AGENTS.md)
+
 ## 📎 References (receipts)
 If you want the “why” behind the shape:
 - [`docs/rubric.md`](./docs/rubric.md)
