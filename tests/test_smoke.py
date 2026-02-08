@@ -7,12 +7,19 @@ from pathlib import Path
 import pytest
 
 from rpo.cli import _load_json
-from rpo.schema import validate_rpo
 from rpo.render_ui import render_ui
+from rpo.schema import validate_rpo
+
+
+ROOT = Path(__file__).resolve().parents[1]
+EXAMPLES_DIR = ROOT / "examples"
+SCHEMA_DIR = ROOT / "schema"
+PACKAGED_SCHEMA_PATH = ROOT / "src" / "rpo" / "data" / "rpo.v1.schema.json"
+SRC_DIR = ROOT / "src"
 
 
 def _example(name: str) -> dict:
-    return json.loads((Path("examples") / name).read_text(encoding="utf-8"))
+    return json.loads((EXAMPLES_DIR / name).read_text(encoding="utf-8"))
 
 
 def test_examples_validate():
@@ -65,16 +72,16 @@ def test_cli_load_json_reports_invalid_json(tmp_path: Path):
 
 
 def test_packaged_schema_matches_repo_schema():
-    repo_schema = Path("schema/rpo.v1.schema.json").read_text(encoding="utf-8")
-    packaged_schema = Path("src/rpo/data/rpo.v1.schema.json").read_text(encoding="utf-8")
+    repo_schema = json.loads((SCHEMA_DIR / "rpo.v1.schema.json").read_text(encoding="utf-8"))
+    packaged_schema = json.loads(PACKAGED_SCHEMA_PATH.read_text(encoding="utf-8"))
     assert repo_schema == packaged_schema
 
 
 def test_module_cli_entrypoint_works():
     env = os.environ.copy()
-    env["PYTHONPATH"] = "src"
+    env["PYTHONPATH"] = str(SRC_DIR)
     result = subprocess.run(
-        [sys.executable, "-m", "rpo.cli", "validate", "examples/01-simple-codegen.json"],
+        [sys.executable, "-m", "rpo.cli", "validate", str(EXAMPLES_DIR / "01-simple-codegen.json")],
         check=True,
         capture_output=True,
         text=True,
