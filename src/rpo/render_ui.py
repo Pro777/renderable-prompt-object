@@ -1,10 +1,18 @@
 from __future__ import annotations
 
+import json
 from typing import Any, Dict
 
 
 def _nonempty_lines(items: list[str]) -> list[str]:
     return [x for x in (i.strip() for i in items) if x]
+
+
+def _render_input_item(item: Any) -> str:
+    if isinstance(item, str):
+        return item
+    # Deterministic fallback for structured input items.
+    return json.dumps(item, ensure_ascii=True, sort_keys=True)
 
 
 def render_ui(rpo: Dict[str, Any]) -> str:
@@ -70,7 +78,7 @@ def render_ui(rpo: Dict[str, Any]) -> str:
     if isinstance(inputs, list) and inputs:
         parts.append("Inputs:")
         for item in inputs:
-            parts.append(f"- {item}")
+            parts.append(f"- {_render_input_item(item)}")
 
     parts.append("")
     parts.append("## OUTPUT")

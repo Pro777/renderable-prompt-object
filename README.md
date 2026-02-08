@@ -52,7 +52,7 @@ Format: markdown | Max: 200 words
 
 ## 🚀 Install
 ```bash
-python -m pip install renderable-prompt-object
+python -m pip install -e .
 ```
 
 ## 🛠️ CLI
@@ -66,6 +66,9 @@ rpo render examples/01-simple-codegen.json --target ui
 Behavior notes:
 - CLI fails explicitly for missing files, invalid JSON, and non-object top-level JSON values.
 - UI renderer omits the `Inputs` section unless `hot_task.inputs` contains one or more items.
+- `hot_task.inputs` items must be either non-empty strings or structured objects with
+  `kind` + `id` (optional `uri`, `notes`).
+- Structured `hot_task.inputs` items render as sorted JSON for deterministic output.
 
 Examples:
 - [`examples/01-simple-codegen.json`](./examples/01-simple-codegen.json)

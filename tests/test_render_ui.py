@@ -46,7 +46,16 @@ def test_render_includes_inputs_when_present():
     out = render_ui(obj)
     assert "Inputs:" in out
     assert "- foo.py" in out
-    assert "- {'kind': 'artifact', 'id': 'A-1'}" in out
+    assert '- {"id": "A-1", "kind": "artifact"}' in out
+
+
+def test_render_inputs_object_is_key_order_deterministic():
+    obj = _example("01-simple-codegen.json")
+    obj["hot_task"]["inputs"] = [{"kind": "artifact", "id": "A-1", "notes": "hello"}]
+    out_one = render_ui(obj)
+    obj["hot_task"]["inputs"] = [{"notes": "hello", "id": "A-1", "kind": "artifact"}]
+    out_two = render_ui(obj)
+    assert out_one == out_two
 
 
 def test_render_inputs_presence_changes_structure():
