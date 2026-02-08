@@ -53,6 +53,10 @@ def render_ui(rpo: Dict[str, Any]) -> str:
 
     parts.append("")
     parts.append("## TASK")
+    task_type = (hot.get("type") or "").strip()
+    if task_type:
+        parts.append(f"Type: {task_type}")
+
     prompt = (hot.get("prompt") or "").strip()
     if prompt:
         parts.append(prompt)
@@ -61,11 +65,18 @@ def render_ui(rpo: Dict[str, Any]) -> str:
     if success:
         parts.append(f"Success: {success}")
 
+    # Contract: omit the Inputs section entirely unless one or more items exist.
+    inputs = hot.get("inputs")
+    if isinstance(inputs, list) and inputs:
+        parts.append("Inputs:")
+        for item in inputs:
+            parts.append(f"- {item}")
+
     parts.append("")
     parts.append("## OUTPUT")
     fmt = (contract.get("format") or "").strip()
     max_words = contract.get("max_words")
-    if fmt and max_words:
+    if fmt and max_words is not None:
         parts.append(f"Format: {fmt} | Max: {max_words} words")
     elif fmt:
         parts.append(f"Format: {fmt}")

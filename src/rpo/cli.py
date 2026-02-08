@@ -3,9 +3,22 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+from typing import Any
 
 from .render_ui import render_ui
 from .schema import validate_rpo
+
+
+def _load_json(path: str) -> dict[str, Any]:
+    try:
+        obj = json.loads(Path(path).read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise SystemExit(f"File not found: {path}") from exc
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"Invalid JSON in {path}: line {exc.lineno}, column {exc.colno}") from exc
+    if not isinstance(obj, dict):
+        raise SystemExit(f"Top-level JSON value in {path} must be an object")
+    return obj
 
 
 def main() -> None:
@@ -21,7 +34,7 @@ def main() -> None:
 
     args = p.parse_args()
 
-    obj = json.loads(Path(args.path).read_text(encoding="utf-8"))
+    obj = _load_json(args.path)
 
     if args.cmd == "validate":
         errors = validate_rpo(obj)
@@ -43,3 +56,7 @@ def main() -> None:
             return
 
     raise SystemExit(2)
+
+
+if __name__ == "__main__":
+    main()
