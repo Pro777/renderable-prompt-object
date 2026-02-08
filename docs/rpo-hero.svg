@@ -46,7 +46,7 @@
     <rect x="97" y="100" width="45" height="3.5" rx="1.5" fill="#f59e0b" opacity="0.5"/>
   </g>
   <!-- Label -->
-  <text x="130" y="186" fill="#94a3b8" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="9" text-anchor="middle" letter-spacing="0.12em" opacity="0.6">PROMPT OBJECT</text>
+  <text x="130" y="186" fill="#94a3b8" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="9" text-anchor="middle" letter-spacing="0.12em" opacity="0.35">PROMPT OBJECT</text>
 
   <!-- ================================ -->
   <!-- TRANSITION 1: FILTER (winnowing) -->
@@ -86,17 +86,17 @@
     <circle cx="12" cy="9" r="3.5" fill="#f59e0b" opacity="0.85"/>
     <circle cx="24" cy="9" r="3.5" fill="#f59e0b" opacity="0.6"/>
     <circle cx="36" cy="9" r="3.5" fill="#f59e0b" opacity="0.4"/>
-    <!-- Content lines (sparser - fewer, bolder) -->
+    <!-- Content lines (sparser - fewer, bolder; pink lines foreshadow target) -->
     <rect x="16" y="32" width="70" height="4" rx="2" fill="#f59e0b" opacity="0.8"/>
     <rect x="92" y="32" width="65" height="4" rx="2" fill="#94a3b8" opacity="0.5"/>
     <rect x="16" y="48" width="50" height="4" rx="2" fill="#f59e0b" opacity="0.65"/>
-    <rect x="72" y="48" width="55" height="4" rx="2" fill="#cbd5e1" opacity="0.45"/>
-    <rect x="16" y="64" width="65" height="4" rx="2" fill="#94a3b8" opacity="0.4"/>
+    <rect x="72" y="48" width="55" height="4" rx="2" fill="#ec4899" opacity="0.5"/>
+    <rect x="16" y="64" width="65" height="4" rx="2" fill="#ec4899" opacity="0.45"/>
     <rect x="16" y="80" width="45" height="4" rx="2" fill="#f59e0b" opacity="0.5"/>
-    <rect x="67" y="80" width="40" height="4" rx="2" fill="#cbd5e1" opacity="0.4"/>
+    <rect x="67" y="80" width="40" height="4" rx="2" fill="#ec4899" opacity="0.4"/>
   </g>
   <!-- Label -->
-  <text x="400" y="186" fill="#94a3b8" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="9" text-anchor="middle" letter-spacing="0.12em" opacity="0.6">RENDER</text>
+  <text x="400" y="186" fill="#94a3b8" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="9" text-anchor="middle" letter-spacing="0.12em" opacity="0.35">RENDER</text>
 
   <!-- ================================== -->
   <!-- TRANSITION 2: RESHAPE (recoloring) -->
@@ -138,7 +138,7 @@
     <rect x="67" y="58" width="35" height="4" rx="2" fill="#94a3b8" opacity="0.35"/>
   </g>
   <!-- Label -->
-  <text x="670" y="186" fill="#94a3b8" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="9" text-anchor="middle" letter-spacing="0.12em" opacity="0.6">TARGET</text>
+  <text x="670" y="186" fill="#94a3b8" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="9" text-anchor="middle" letter-spacing="0.12em" opacity="0.35">TARGET</text>
 
   <!-- =========== -->
   <!-- TEXT LABELS  -->
@@ -146,5 +146,5 @@
   <!-- Top-left: bold heading -->
   <text x="40" y="30" fill="#e2e8f0" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="20" font-weight="700" letter-spacing="-0.01em">Filter. Reshape. Ship.</text>
   <!-- Bottom-right: tagline (italic to match ChatGPT image) -->
-  <text x="760" y="210" fill="#94a3b8" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12" font-style="italic" text-anchor="end" opacity="0.65">One prompt. Every model. Fewer tokens.</text>
+  <text x="760" y="210" fill="#94a3b8" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12" font-style="italic" text-anchor="end" opacity="0.4">One prompt. Every model. Fewer tokens.</text>
 </svg>
