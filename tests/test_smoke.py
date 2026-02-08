@@ -51,7 +51,7 @@ def test_render_includes_task_type_and_inputs():
     assert "- {'kind': 'artifact', 'id': 'A-1'}" in out
 
 
-def test_render_includes_zero_like_max_words():
+def test_render_includes_positive_max_words():
     obj = _example("01-simple-codegen.json")
     obj["output_contract"]["max_words"] = 1
     out = render_ui(obj)
@@ -68,6 +68,14 @@ def test_cli_load_json_reports_invalid_json(tmp_path: Path):
     bad.write_text("{\n  not-json\n}\n", encoding="utf-8")
 
     with pytest.raises(SystemExit, match=r"^Invalid JSON in .* line 2, column 3$"):
+        _load_json(str(bad))
+
+
+def test_cli_load_json_requires_object_top_level(tmp_path: Path):
+    bad = tmp_path / "bad.json"
+    bad.write_text("[1, 2, 3]\n", encoding="utf-8")
+
+    with pytest.raises(SystemExit, match=r"^Top-level JSON value in .* must be an object$"):
         _load_json(str(bad))
 
 
