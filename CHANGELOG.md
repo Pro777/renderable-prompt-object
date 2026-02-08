@@ -16,6 +16,8 @@ The format is based on *Keep a Changelog*, and this project aims to follow Seman
   deterministic output, required sections, and `hot_task.inputs` presence/absence behavior.
 - PR policy gate workflow at [`/.github/workflows/policy-gates.yml`](./.github/workflows/policy-gates.yml)
   with docs/changelog enforcement logic in [`/.github/scripts/pr_docs_gate.py`](./.github/scripts/pr_docs_gate.py).
+- PR template gate logic in [`/.github/scripts/pr_template_gate.py`](./.github/scripts/pr_template_gate.py)
+  to enforce required PR description sections from [`.github/PULL_REQUEST_TEMPLATE.md`](./.github/PULL_REQUEST_TEMPLATE.md).
 - Copilot review auto-resolve workflow at [`/.github/workflows/copilot-autoresolve.yml`](./.github/workflows/copilot-autoresolve.yml)
   with thread triage logic in [`/.github/scripts/copilot_autoresolve.py`](./.github/scripts/copilot_autoresolve.py).
 

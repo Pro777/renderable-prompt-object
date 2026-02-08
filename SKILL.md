@@ -32,6 +32,7 @@ Use this skill for tasks involving:
 5. Run verification commands.
 6. If external behavior changes, update [`CHANGELOG.md`](./CHANGELOG.md).
 7. Ensure policy gates pass in CI:
+   - [`pr-template-gate`](./.github/workflows/policy-gates.yml)
    - [`docs-changelog-gate`](./.github/workflows/policy-gates.yml)
    - [`Copilot Auto-Resolve`](./.github/workflows/copilot-autoresolve.yml)
 

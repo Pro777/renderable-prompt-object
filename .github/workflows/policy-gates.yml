@@ -5,6 +5,20 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
+  pr-template-gate:
+    if: ${{ github.event.pull_request.draft == false }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enforce PR description template sections
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          python .github/scripts/pr_template_gate.py
+
   docs-changelog-gate:
     if: ${{ github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
