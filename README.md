@@ -1,5 +1,7 @@
 # Renderable Prompt Object (RPO)
 
+> **Motto:** schema stays rich; renderer stays lean
+
 <p align="center">
   <img src="docs/rpo-hero.svg" alt="Filter. Reshape. Ship." width="800"/>
 </p>
