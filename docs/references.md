@@ -73,6 +73,6 @@ design.
 - UI renderer: [`src/rpo/render_ui.py`](../src/rpo/render_ui.py)
 - CLI entrypoint: [`src/rpo/cli.py`](../src/rpo/cli.py)
 - Examples:  
-  [`examples/01-simple-codegen.json`](../examples/01-simple-codegen.json)  
-  [`examples/90-research-round.json`](../examples/90-research-round.json)
+  [examples/01-simple-codegen.json](../examples/01-simple-codegen.json)  
+  [examples/90-research-round.json](../examples/90-research-round.json)
 - Tests: [`tests/test_smoke.py`](../tests/test_smoke.py)

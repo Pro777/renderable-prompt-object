@@ -9,13 +9,17 @@ RPO is a **prompt intermediate representation** (IR): a small JSON schema for ca
 > Status: early v0 (spec/examples first; CLI/package catching up). Created 2026-02-07.
 
 ## Start here
-- `docs/llm-card.md` — canonical RPO shape (rules/state/task/output contract)
-- `docs/rubric.md` — contract/rubric (what “good” looks like)
-- `docs/research/rpo-academic-research-2026-02-10.md` — deep research packet (start here if you want the academic backbone)
-- `docs/README.md` — docs index
-- `examples/01-simple-codegen.json` — smallest end-to-end example
-- `examples/90-research-round.json` + `modes/research.mode.md` — richer research workflow example
-- `docs/research/` — research index (more packets)
+
+Docs:
+- [docs/llm-card.md](./docs/llm-card.md) — canonical RPO shape (rules/state/task/output contract)
+- [docs/rubric.md](./docs/rubric.md) — contract/rubric (what “good” looks like)
+- [docs/research/rpo-academic-research-2026-02-10.md](./docs/research/rpo-academic-research-2026-02-10.md) — deep research packet (start here if you want the academic backbone)
+- [docs/](./docs/) — docs index
+- [docs/research/](./docs/research/) — research index
+
+Examples:
+- [examples/01-simple-codegen.json](./examples/01-simple-codegen.json) — smallest end-to-end example
+- [examples/90-research-round.json](./examples/90-research-round.json) + [modes/research.mode.md](./modes/research.mode.md) — richer research workflow example
 
 ## ✅ What it is
 - A **structured prompt object** (not one giant string)
