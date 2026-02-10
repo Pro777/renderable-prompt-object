@@ -8,7 +8,14 @@ RPO is a **prompt intermediate representation** (IR): a small JSON schema for ca
 
 > Status: early v0 (spec/examples first; CLI/package catching up). Created 2026-02-07.
 
-## What it is
+## Start here
+- `docs/llm-card.md` — canonical RPO shape (rules/state/task/output contract)
+- `docs/rubric.md` — contract/rubric (what “good” looks like)
+- `examples/01-simple-codegen.json` — smallest end-to-end example
+- `examples/90-research-round.json` + `modes/research.mode.md` — richer research workflow example
+- `docs/research/` — academic anchors and long-form notes
+
+## ✅ What it is
 - A **structured prompt object** (not one giant string)
 - A **validator** (schema + constraints)
 - A set of **renderers** (Chat UI, API/provider formats)

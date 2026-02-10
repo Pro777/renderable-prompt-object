@@ -61,13 +61,16 @@ RPO explicitly does **not** aim to be:
 
 ## Verification gates
 
-Changes should not be accepted unless the following remain true:
+Changes are **not acceptable** unless the required verification commands pass.
+The repo’s `SKILL.md` is the source of truth for which verification commands apply.
 
-- Examples validate against the schema:
+At minimum, the following must remain true:
+
+- Examples validate against the canonical schema:
   [`schema/rpo.v1.schema.json`](../schema/rpo.v1.schema.json)
 - The packaged schema matches the canonical schema:
   [`src/rpo/data/rpo.v1.schema.json`](../src/rpo/data/rpo.v1.schema.json)
-- Renderer output remains deterministic in:
+- Rendering is deterministic for a given input (UI renderer):
   [`src/rpo/render_ui.py`](../src/rpo/render_ui.py)
 - Regressions are covered by snapshot or smoke tests:
   [`tests/test_smoke.py`](../tests/test_smoke.py)
