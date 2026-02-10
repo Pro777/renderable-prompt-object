@@ -11,6 +11,7 @@ RPO is a **prompt intermediate representation** (IR): a small JSON schema for ca
 ## Start here
 - `docs/llm-card.md` — canonical RPO shape (rules/state/task/output contract)
 - `docs/rubric.md` — contract/rubric (what “good” looks like)
+- `docs/README.md` — docs index
 - `examples/01-simple-codegen.json` — smallest end-to-end example
 - `examples/90-research-round.json` + `modes/research.mode.md` — richer research workflow example
 - `docs/research/` — academic anchors and long-form notes
