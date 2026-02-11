@@ -63,12 +63,16 @@ python -m pip install renderable-prompt-object
 ```bash
 rpo validate examples/01-simple-codegen.json
 rpo render examples/01-simple-codegen.json --target ui
+rpo schema
+rpo schema --out /tmp/rpo.v1.schema.json
 ```
 
 Provider/API rendering is intentionally out of scope for this early release.
 
 Behavior notes:
 - CLI fails explicitly for missing files, invalid JSON, and non-object top-level JSON values.
+- `rpo schema` prints the bundled schema as pretty JSON.
+- `rpo schema --out <path>` writes the schema and prints `wrote <path>`.
 - UI renderer omits the `Inputs` section unless `hot_task.inputs` contains one or more items.
 
 Examples:
