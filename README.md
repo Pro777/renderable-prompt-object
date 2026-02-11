@@ -77,13 +77,16 @@ python -m pip install renderable-prompt-object
 ## CLI
 ```bash
 rpo validate examples/01-simple-codegen.json
+rpo validate examples/01-simple-codegen.json --format json
 rpo render examples/01-simple-codegen.json --target ui
 ```
 
 Provider/API rendering is intentionally out of scope for this early release.
 
 Behavior notes:
-- CLI fails explicitly for missing files, invalid JSON, and non-object top-level JSON values.
+- `rpo validate --format` accepts `text` (default) and `json`.
+- JSON validation output shape is stable: `{"ok": <bool>, "errors": [{"path": "...", "message": "..."}]}`.
+- Exit codes: `0` valid, `1` schema-invalid, `2` CLI misuse or input/load errors (missing file, invalid JSON, non-object top-level JSON).
 - UI renderer omits the `Inputs` section unless `hot_task.inputs` contains one or more items.
 
 Examples:
