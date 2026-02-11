@@ -96,3 +96,35 @@ def test_module_cli_entrypoint_works():
         env=env,
     )
     assert result.stdout.strip() == "ok"
+
+
+def test_schema_command_prints_json():
+    env = os.environ.copy()
+    env["PYTHONPATH"] = str(SRC_DIR)
+    result = subprocess.run(
+        [sys.executable, "-m", "rpo.cli", "schema"],
+        check=True,
+        capture_output=True,
+        text=True,
+        env=env,
+    )
+    payload = json.loads(result.stdout)
+    assert isinstance(payload, dict)
+    assert "$schema" in payload
+
+
+def test_schema_command_out_writes_file(tmp_path: Path):
+    env = os.environ.copy()
+    env["PYTHONPATH"] = str(SRC_DIR)
+    out = tmp_path / "rpo.v1.schema.json"
+    result = subprocess.run(
+        [sys.executable, "-m", "rpo.cli", "schema", "--out", str(out)],
+        check=True,
+        capture_output=True,
+        text=True,
+        env=env,
+    )
+    assert result.stdout.strip() == f"wrote {out}"
+    payload = json.loads(out.read_text(encoding="utf-8"))
+    assert isinstance(payload, dict)
+    assert "$schema" in payload

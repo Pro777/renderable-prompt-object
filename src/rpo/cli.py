@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from .render_ui import render_ui
-from .schema import validate_rpo
+from .schema import get_schema, validate_rpo
 
 
 def _load_json(path: str) -> dict[str, Any]:
@@ -32,7 +32,19 @@ def main() -> None:
     r.add_argument("path", help="Path to RPO JSON")
     r.add_argument("--target", choices=["ui"], default="ui")
 
+    s = sub.add_parser("schema", help="Print or write the bundled RPO JSON schema")
+    s.add_argument("--out", help="Write schema JSON to a file path")
+
     args = p.parse_args()
+
+    if args.cmd == "schema":
+        rendered = json.dumps(get_schema(), indent=2) + "\n"
+        if args.out:
+            Path(args.out).write_text(rendered, encoding="utf-8")
+            print(f"wrote {args.out}")
+            return
+        print(rendered, end="")
+        return
 
     obj = _load_json(args.path)
 

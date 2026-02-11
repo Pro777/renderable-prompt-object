@@ -13,6 +13,11 @@ def _load_schema() -> Dict[str, Any]:
         return json.load(f)
 
 
+def get_schema() -> Dict[str, Any]:
+    """Return the bundled RPO JSON schema."""
+    return _load_schema()
+
+
 def validate_rpo(obj: Dict[str, Any]) -> List[str]:
     """Validate an RPO object. Returns a list of human-readable errors (empty if valid)."""
 
