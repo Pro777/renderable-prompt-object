@@ -37,7 +37,7 @@ You write this once as a JSON object. A **renderer** then converts it into whate
 
 Instead of this string:
 
-> "You are a code reviewer. Be concise and focus on correctness. The project uses Python 3.10 with pytest. We've already decided to use dataclasses over Pydantic. Review this pull request for bugs and suggest fixes. Output your review as markdown with no more than 300 words."
+> "You are a code reviewer. Be concise and focus on correctness. The project uses Python 3.10 with pytest. We've already decided to use dataclasses over Pydantic. Review this pull request for bugs and suggest fixes. Output your review as Markdown with no more than 300 words."
 
 You write this object:
 
