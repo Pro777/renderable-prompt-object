@@ -13,6 +13,7 @@ RPO is a **prompt intermediate representation** (IR): a small JSON schema for ca
 ## Start here
 
 Docs:
+- [docs/tldr.md](./docs/tldr.md) — **TLDR: plain-English explainer** (start here if you're new)
 - [docs/llm-card.md](./docs/llm-card.md) — canonical RPO shape (rules/state/task/output contract)
 - [docs/rubric.md](./docs/rubric.md) — contract/rubric (what “good” looks like)
 - [docs/research/rpo-academic-research-2026-02-10.md](./docs/research/rpo-academic-research-2026-02-10.md) — deep research packet (start here if you want the academic backbone)
