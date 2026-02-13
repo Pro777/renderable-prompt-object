@@ -62,7 +62,7 @@ RPO explicitly does **not** aim to be:
 ## Verification gates
 
 Changes are **not acceptable** unless the required verification commands pass.
-ds apply.
+The repo uses a small, public set of verification commands; run tests and validate/render the bundled examples.
 
 At minimum, the following must remain true:
 
