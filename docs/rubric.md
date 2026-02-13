@@ -62,7 +62,7 @@ RPO explicitly does **not** aim to be:
 ## Verification gates
 
 Changes are **not acceptable** unless the required verification commands pass.
-The repo’s `SKILL.md` is the source of truth for which verification commands apply.
+ds apply.
 
 At minimum, the following must remain true:
 

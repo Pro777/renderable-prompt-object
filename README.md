@@ -92,8 +92,6 @@ Examples:
 - [`examples/90-research-round.json`](./examples/90-research-round.json) (paired with [`modes/research.mode.md`](./modes/research.mode.md))
 
 ## Contribution Workflow
-- Agent/reviewer workflow and completion gates: [`SKILL.md`](./SKILL.md)
-- Collaboration guardrails: [`AGENTS.md`](./AGENTS.md)
 - PR docs/changelog enforcement: [`.github/workflows/policy-gates.yml`](./.github/workflows/policy-gates.yml)
 - PR description template enforcement: [`.github/scripts/pr_template_gate.py`](./.github/scripts/pr_template_gate.py)
 - Copilot review thread auto-resolution: [`.github/workflows/copilot-autoresolve.yml`](./.github/workflows/copilot-autoresolve.yml)
