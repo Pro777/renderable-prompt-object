@@ -1,0 +1,59 @@
+{
+  "rowan.emoji": "🧱",
+  "rowan.emojiLexicon": {
+    "projects": {
+      "clawd": {
+        "emoji": "⛺️",
+        "path": "/Users/johnmalone/clawd"
+      },
+      "diminishing-returns": {
+        "emoji": "📉",
+        "path": "/Users/johnmalone/Projects/diminishing-returns"
+      },
+      "freeverse": {
+        "emoji": "📜",
+        "path": "/Users/johnmalone/Projects/freeverse"
+      },
+      "mls": {
+        "emoji": "🏠",
+        "path": "/Users/johnmalone/Projects/mls"
+      },
+      "proofofship": {
+        "emoji": "🚢",
+        "path": "/Users/johnmalone/Projects/proofofship"
+      },
+      "renderable-prompt-object": {
+        "emoji": "🧱",
+        "path": "/Users/johnmalone/Projects/renderable-prompt-object"
+      },
+      "ship-receipts": {
+        "emoji": "🧾",
+        "path": "/Users/johnmalone/Projects/ship-receipts"
+      },
+      "silicon_prairie": {
+        "emoji": "🌾",
+        "path": "/Users/johnmalone/Projects/silicon_prairie"
+      },
+      "tautai": {
+        "emoji": "🛶",
+        "path": "/Users/johnmalone/Projects/tautai"
+      }
+    },
+    "version": 1
+  },
+  "rowan.project": "renderable-prompt-object",
+  "terminal.integrated.env.osx": {
+    "ROWAN_PROJECT": "renderable-prompt-object",
+    "ROWAN_PROJECT_EMOJI": "🧱"
+  },
+  "window.title": "🧱 renderable-prompt-object — ${activeEditorShort}",
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#ff7a59",
+    "activityBar.foreground": "#ffffff",
+    "statusBar.background": "#ff7a59",
+    "statusBar.foreground": "#ffffff",
+    "statusBarItem.prominentBackground": "#00000033",
+    "titleBar.activeBackground": "#ff7a59",
+    "titleBar.activeForeground": "#ffffff"
+  }
+}

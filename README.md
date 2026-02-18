@@ -15,7 +15,7 @@ RPO is a **prompt intermediate representation** (IR): a small JSON schema for ca
 Docs:
 - [docs/tldr.md](./docs/tldr.md) — **TLDR: plain-English explainer** (start here if you're new)
 - [docs/llm-card.md](./docs/llm-card.md) — canonical RPO shape (rules/state/task/output contract)
-- [docs/rubric.md](./docs/rubric.md) — contract/rubric (what “good” looks like)
+- [docs/rubric.md](./docs/rubric.md) — contract/rubric (what "good" looks like)
 - [docs/research/rpo-academic-research-2026-02-10.md](./docs/research/rpo-academic-research-2026-02-10.md) — deep research packet (start here if you want the academic backbone)
 - [docs/](./docs/) — docs index
 - [docs/research/](./docs/research/) — research index
@@ -78,6 +78,7 @@ python -m pip install -e .
 ## CLI
 ```bash
 rpo validate examples/01-simple-codegen.json
+rpo validate examples/01-simple-codegen.json --format json
 rpo render examples/01-simple-codegen.json --target ui
 rpo schema
 rpo schema --out /tmp/rpo.v1.schema.json
@@ -89,6 +90,9 @@ Behavior notes:
 - CLI fails explicitly for missing files, invalid JSON, and non-object top-level JSON values.
 - `rpo schema` prints the bundled schema as pretty JSON.
 - `rpo schema --out <path>` writes the schema and prints `wrote <path>`.
+- `rpo validate --format` accepts `text` (default) and `json`.
+- JSON validation output shape is stable: `{"ok": <bool>, "errors": [{"path": "...", "message": "..."}]}`.
+- Exit codes: `0` valid, `1` schema-invalid, `2` CLI misuse or input/load errors (missing file, invalid JSON, non-object top-level JSON).
 - UI renderer omits the `Inputs` section unless `hot_task.inputs` contains one or more items.
 - `hot_task.inputs` items must be either non-empty strings or structured objects with
   `kind` + `id` (optional `uri`, `notes`).

@@ -59,24 +59,30 @@ def test_render_includes_positive_max_words():
 
 
 def test_cli_load_json_reports_file_not_found():
-    with pytest.raises(SystemExit, match=r"^File not found: no-such-file\.json$"):
+    with pytest.raises(SystemExit) as exc:
         _load_json("no-such-file.json")
+    assert exc.value.code == 2
+    assert str(exc.value.__cause__) == "File not found: no-such-file.json"
 
 
 def test_cli_load_json_reports_invalid_json(tmp_path: Path):
     bad = tmp_path / "bad.json"
     bad.write_text("{\n  not-json\n}\n", encoding="utf-8")
 
-    with pytest.raises(SystemExit, match=r"^Invalid JSON in .* line 2, column 3$"):
+    with pytest.raises(SystemExit) as exc:
         _load_json(str(bad))
+    assert exc.value.code == 2
+    assert str(exc.value.__cause__).endswith("line 2, column 3")
 
 
 def test_cli_load_json_requires_object_top_level(tmp_path: Path):
     bad = tmp_path / "bad.json"
     bad.write_text("[1, 2, 3]\n", encoding="utf-8")
 
-    with pytest.raises(SystemExit, match=r"^Top-level JSON value in .* must be an object$"):
+    with pytest.raises(SystemExit) as exc:
         _load_json(str(bad))
+    assert exc.value.code == 2
+    assert str(exc.value.__cause__).endswith("must be an object")
 
 
 def test_packaged_schema_matches_repo_schema():
@@ -136,3 +142,66 @@ def test_schema_command_out_writes_file(tmp_path: Path):
     payload = json.loads(out.read_text(encoding="utf-8"))
     assert isinstance(payload, dict)
     assert "$schema" in payload
+
+
+def test_validate_json_output_and_exit_codes(tmp_path: Path):
+    env = os.environ.copy()
+    env["PYTHONPATH"] = str(SRC_DIR)
+
+    valid = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "rpo.cli",
+            "validate",
+            str(EXAMPLES_DIR / "01-simple-codegen.json"),
+            "--format",
+            "json",
+        ],
+        capture_output=True,
+        text=True,
+        env=env,
+    )
+    assert valid.returncode == 0
+    valid_payload = json.loads(valid.stdout)
+    assert valid_payload == {"ok": True, "errors": []}
+
+    invalid_path = tmp_path / "invalid.json"
+    invalid_path.write_text("{}", encoding="utf-8")
+    invalid = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "rpo.cli",
+            "validate",
+            str(invalid_path),
+            "--format",
+            "json",
+        ],
+        capture_output=True,
+        text=True,
+        env=env,
+    )
+    assert invalid.returncode == 1
+    invalid_payload = json.loads(invalid.stdout)
+    assert invalid_payload["ok"] is False
+    assert isinstance(invalid_payload["errors"], list)
+    assert len(invalid_payload["errors"]) > 0
+    assert set(invalid_payload["errors"][0].keys()) == {"path", "message"}
+
+    missing = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "rpo.cli",
+            "validate",
+            str(tmp_path / "missing.json"),
+            "--format",
+            "json",
+        ],
+        capture_output=True,
+        text=True,
+        env=env,
+    )
+    assert missing.returncode == 2
+    assert "File not found:" in missing.stderr
