@@ -34,7 +34,25 @@
         "type": {"type": "string", "minLength": 1},
         "prompt": {"type": "string"},
         "success_criteria": {"type": "string"},
-        "inputs": {"type": "array"}
+        "inputs": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {"type": "string", "minLength": 1},
+              {
+                "type": "object",
+                "required": ["kind", "id"],
+                "properties": {
+                  "kind": {"type": "string", "minLength": 1},
+                  "id": {"type": "string", "minLength": 1},
+                  "uri": {"type": "string", "format": "uri"},
+                  "notes": {"type": "string"}
+                },
+                "additionalProperties": false
+              }
+            ]
+          }
+        }
       },
       "additionalProperties": false
     },

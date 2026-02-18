@@ -48,7 +48,7 @@ def test_render_includes_task_type_and_inputs():
     assert "Type: codegen" in out
     assert "Inputs:" in out
     assert "- foo.py" in out
-    assert "- {'kind': 'artifact', 'id': 'A-1'}" in out
+    assert '- {"id": "A-1", "kind": "artifact"}' in out
 
 
 def test_render_includes_positive_max_words():
@@ -83,6 +83,14 @@ def test_packaged_schema_matches_repo_schema():
     repo_schema = json.loads((SCHEMA_DIR / "rpo.v1.schema.json").read_text(encoding="utf-8"))
     packaged_schema = json.loads(PACKAGED_SCHEMA_PATH.read_text(encoding="utf-8"))
     assert repo_schema == packaged_schema
+
+
+def test_schema_rejects_invalid_structured_inputs():
+    obj = _example("01-simple-codegen.json")
+    obj["hot_task"]["inputs"] = [{"kind": "artifact"}]
+    errors = validate_rpo(obj)
+    assert errors
+    assert any("hot_task.inputs.0" in e for e in errors)
 
 
 def test_module_cli_entrypoint_works():
