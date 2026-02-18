@@ -8,3 +8,4 @@ If you’re new here, start with:
 
 ## Index
 - [rpo-academic-research-2026-02-10.md](./rpo-academic-research-2026-02-10.md) — academic anchors for RPO: structured prompting, prompt-as-code, constrained outputs, and evaluation
+- [rpo-research-sweep-2026-02-17.md](./rpo-research-sweep-2026-02-17.md) — deep sweep across 6 tracks (token efficiency, determinism, Microsoft ecosystem, schema validation, prompt CI/CD, separation of concerns)
